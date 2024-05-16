@@ -1,14 +1,12 @@
 ---
-import { Image } from "astro:assets";
 import PrimaryCta from "./PrimaryCta.astro";
-import mainLogo from "../../public/mainLogo.jpeg";
 ---
 
 <astro-nav class="main-wrapper">
   <div class="logo">
-    <Image
+    <img
       class="img"
-      src={mainLogo}
+      src="../../public/mainLogo.jpeg"
       alt="Logo"
       decoding="async"
       loading="lazy"

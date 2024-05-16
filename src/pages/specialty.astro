@@ -1,8 +1,6 @@
 ---
-import { Image } from "astro:assets";
 import Layout from "../layouts/Layout.astro";
 import HeroImage from "../components/HeroImage.astro";
-import packageBg1 from "../../public/packageBg1.jpg";
 import LionFishHunting from "../components/LionFishHunting.astro";
 import SpecialtyPriceCard from "../components/SpecialtyPriceCard.astro";
 import ReadyToBook from "../components/ReadyToBook.astro";
@@ -24,9 +22,9 @@ import FormsToDownload from "../components/FormsToDownload.astro";
   />
   <div class="specialty">
     <div class="image">
-      <Image
+      <img
         class="image-item"
-        src={packageBg1}
+        src="../../public/packageBg1.jpg"
         alt="foto de 3 busos en un arrefice con uchos peces"
       />
     </div>
