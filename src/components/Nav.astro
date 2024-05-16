@@ -45,20 +45,29 @@ import mainLogo from "../../public/mainLogo.jpeg";
         fill-rule="evenodd"
         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
       ></path>
-    </svg>
-  </div>
+    </svg></div
+  >
 </astro-nav>
 <!-- Function Nav opener -->
 <script>
   const tgt = document.querySelector("#tgt");
-  tgt.addEventListener("click", () => {
-    console.log("Toggle button clicked");
-    const navList = document.querySelector(".nav-list");
-    navList.classList.toggle("active");
-    const Wrapper = document.querySelector(".main-wrapper");
-    Wrapper.classList.toggle("active");
-  });
+  if (tgt !== null) {
+    tgt.addEventListener("click", () => {
+      console.log("Toggle button clicked");
+
+      const navList = document.querySelector(".nav-list");
+      if (navList !== null) {
+        navList.classList.toggle("active");
+      }
+
+      const Wrapper = document.querySelector(".main-wrapper");
+      if (Wrapper !== null) {
+        Wrapper.classList.toggle("active");
+      }
+    });
+  }
 </script>
+
 <!-- Styles -->
 
 <style>
@@ -84,12 +93,10 @@ import mainLogo from "../../public/mainLogo.jpeg";
 
   astro-nav .nav-list {
     display: flex;
+    padding: 1rem;
     align-items: baseline;
     list-style-type: none;
     justify-content: space-around;
-    transition: max-height 0.3s ease-out;
-    max-height: 0;
-    padding: 0;
   }
 
   astro-nav .nav-list.active {
@@ -126,9 +133,10 @@ import mainLogo from "../../public/mainLogo.jpeg";
     justify-content: center;
   }
   astro-nav .toggle {
-    position: absolute;
     top: 15px;
     right: 30px;
+    display: none;
+    position: absolute;
   }
 
   @media (max-width: 780px) {
