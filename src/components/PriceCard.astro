@@ -1,0 +1,153 @@
+---
+import { Image } from "astro:assets";
+import captain from "../../public/captain.png";
+import tank from "../../public/tank.png";
+import sandwich from "../../public/sandwich.png";
+import weight from "../../public/weight.png";
+import water from "../../public/water.png";
+import fruit from "../../public/fruit.png";
+
+const captainAlt = "GUIDED BOAT DIVE";
+const sandwichAlt = "SANDWICHES";
+const weightAlt = "WEIGHTS";
+const waterAlt = "WATER";
+const fruitAlt = "FRUIT";
+
+interface Props {
+  packageName: string;
+  price: string;
+  dives: string;
+}
+const { packageName, price, dives } = Astro.props;
+---
+
+<priceCard>
+  <div class="main-card-wrapper">
+    <div class="title">
+      <h4>{packageName}</h4>
+    </div>
+    <div class="content">
+      <div class="price">
+        <span>{price}</span>
+        <p> What's Included</p>
+      </div>
+      <div class="description">
+        <div class="item">
+          <Image class="icon" src={captain} alt={captainAlt} />
+          <p>{captainAlt}</p>
+        </div>
+        <div class="item">
+          <Image class="icon" src={tank} alt={dives} />
+          <p>{dives}</p>
+        </div>
+        <div class="item">
+          <Image class="icon" src={sandwich} alt={sandwichAlt} />
+          <p>{sandwichAlt}</p>
+        </div>
+        <div class="item">
+          <Image class="icon" src={weight} alt={weightAlt} />
+          <p>{weightAlt}</p>
+        </div>
+        <div class="item">
+          <Image class="icon" src={water} alt={waterAlt} />
+          <p>{waterAlt}</p>
+        </div>
+        <div class="item">
+          <Image class="icon" src={fruit} alt={fruitAlt} />
+          <p>{fruitAlt}</p>
+        </div>
+      </div>
+      <div class="policy">
+        <p>Have any questions please let us know, we'd be happy to answer</p>
+        <p> </p>
+      </div>
+    </div>
+    <div class="cta">
+      <a href="/Booning">Book Now</a>
+    </div>
+  </div>
+</priceCard>
+
+<style>
+  .main-card-wrapper {
+    background-color: #ead91a;
+    border-radius: 15px;
+    overflow-x: hidden;
+    max-width: 400px;
+    height: fit-content;
+    min-height: 90vh;
+  }
+  .title {
+    width: 100%;
+    padding: 2rem 0;
+    font-weight: bold;
+    font-size: xx-large;
+    text-align: center;
+    color: #fff;
+    background-color: #d90b16;
+  }
+  .content {
+    color: #0b0b0b;
+  }
+  .price {
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+    color: #581515;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .price span {
+    font-size: xxx-large;
+    font-weight: bolder;
+  }
+  .price p {
+    font-size: x-large;
+    font-weight: bold;
+  }
+  .description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 3rem;
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0.3rem 0rem;
+  }
+  .icon {
+    width: 50px;
+  }
+  .item p {
+    padding-left: 1rem;
+  }
+  .policy {
+    color: #581515;
+    padding: 1rem 2rem;
+  }
+  .cta {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .cta a {
+    font-weight: bold;
+    width: fit-content;
+    font-size: larger;
+    padding: 1rem 3rem;
+    border-radius: 15px;
+    color: white;
+    background-color: #0b0b0b;
+  }
+  .cta a:hover {
+    background-color: #d90b16;
+    color: white;
+  }
+</style>

@@ -1,0 +1,52 @@
+<mainCtaBtn class="main-btn-component">
+  <a href="/booking" class="book-now">Book Now</a>
+  <a
+    target="_blank"
+    href="https://www.google.com/search?q=hammer+head+cozumel&oq=hammer+head+cozumel&gs_lcrp=EgZjaHJvbWUyBggAEEUYOTIGCAEQRRg9MgYIAhBFGDwyBggDEEUYPNIBCDk4MzVqMGo3qAIAsAIA&sourceid=chrome&ie=UTF-8#lrd=0x8f4e57005df3a099:0xe7e5a151dc640a4a,1,,,,"
+    class="reviews">Reviews</a
+  >
+</mainCtaBtn>
+<style>
+  .main-btn-component {
+    display: flex;
+    flex-direction: row;
+    gap: 15px;
+  }
+  a {
+    padding: 1rem 2.5rem;
+    border-radius: 15px;
+    font-weight: bolder;
+    font-size: larger;
+    width: max-content;
+  }
+  .book-now {
+    color: #0b0b0b;
+    background-color: #ead91a;
+  }
+  .book-now:hover {
+    color: white;
+    background-color: #0b0b0b;
+    outline: solid 1px white;
+}
+.reviews {
+    color: white;
+    outline: solid 1px white;
+    background-color: #0b0b0b55;
+}
+.reviews:hover {
+    color: white;
+    background-color: #0b0b0b;
+    outline: solid 1px #ffffff70;
+  }
+
+  @media (max-width: 400px) {
+    a {
+      padding: 0.5rem 1.5rem;
+    }
+  }
+  @media (max-width: 340px) {
+    .main-btn-component {
+      flex-direction: column;
+    }
+  }
+</style>

@@ -1,0 +1,65 @@
+---
+interface Props {
+  title: string;
+  subtitle: string;
+  image: string;
+}
+
+const { subtitle, title, image } = Astro.props;
+---
+
+<astro-hero>
+  <div class="hero-wrapper">
+    <video src={image} autoplay loop muted playsinline></video>
+    <div class="content">
+      <h1>{title}</h1>
+      <p>{subtitle}</p>
+    </div>
+  </div>
+</astro-hero>
+<style>
+  astro-hero .hero-wrapper {
+    width: 100%;
+    min-height: fit-content;
+    position: relative;
+    height: fit-content;
+  }
+  astro-hero .hero-wrapper video {
+    height: 90vh;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.7;
+  }
+  astro-hero .hero-wrapper .content {
+    top: 50%;
+    left: 0rem;
+    max-width: 900px;
+    position: absolute;
+    transform: translate(0%, -50%);
+    color: white;
+    padding: 5rem;
+  }
+  astro-hero h1 {
+    font-size: 3rem;
+    font-weight: bolder;
+    text-shadow: #0b0b0b 2px 2px 50px;
+  }
+  astro-hero p {
+    text-shadow: #0b0b0b 2px 2px 30px;
+  }
+  @media (max-height: 430px) {
+    astro-hero .hero-wrapper {
+      min-height: min-content;
+    }
+    astro-hero .hero-wrapper img {
+      height: 100vh;
+    }
+  }
+  @media (max-width: 720px) {
+    astro-hero .hero-wrapper .content {
+      left: 0;
+      width: 100%;
+      padding: 1rem;
+    }
+  }
+</style>

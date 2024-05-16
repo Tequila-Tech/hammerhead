@@ -1,0 +1,189 @@
+---
+import { Image } from "astro:assets";
+import blogWrapper1 from "../../public/blogWrapper1.jpg";
+---
+
+<blogCta>
+  <div class="content-wrapper-row">
+    <div class="video-wrapper">
+      <video src="/public/video-1.mp4" loop controls playsinline></video>
+    </div>
+    <div class="blog-cta-wrapper">
+      <div class="image">
+        <Image
+          class="image-item"
+          src={blogWrapper1}
+          alt="foto de 3 busos en un arrefice con uchos peces"
+        />
+      </div>
+      <div class="content">
+        <h2>Explore the wonders of Cozumel's marine ecosystems</h2>
+        <p
+          >Cozumel's reefs are vibrant underwater ecosystems filled with
+          colorful corals, diverse fish species, and captivating marine life.
+          From the shallow coral gardens to the dramatic drop-offs, each dive
+          site offers a unique adventure, where you can encounter eagle rays,
+          sea turtles, and explore intricate coral formations</p
+        >
+        <span>Explore our blog to learn more</span>
+      </div>
+    </div>
+  </div>
+  <div class="divers-spacer">
+    <div class="divers-wrapper">
+      <div class="divers-content">
+        <div class="number">900+</div>
+        <p>Happy Divers</p>
+      </div>
+      <div class="divers-content">
+        <div class="number">12</div>
+        <p>Different Reefs</p>
+      </div>
+      <div class="divers-content">
+        <div class="number">24+</div>
+        <p>Years of Experience</p>
+      </div>
+    </div>
+  </div>
+</blogCta>
+<style>
+  blogCta {
+    width: 100%;
+    display: flex;
+    color: white;
+    background-color: #0000;
+    height: fit-content;
+    flex-direction: column;
+  }
+  .content-wrapper-row {
+    gap: 2rem;
+    padding: 3rem;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .video-wrapper {
+    width: 50%;
+    padding: 4rem 2rem;
+  }
+  video {
+    width: 100%;
+    height: 100%;
+    height: 800px;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+  .blog-cta-wrapper {
+    width: 50%;
+    height: 800px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .blog-cta-wrapper .image {
+    height: 45%;
+  }
+  .image-item {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 15px;
+  }
+  .blog-cta-wrapper .content {
+    gap: 1rem;
+    height: 50%;
+    display: flex;
+    padding-top: 2rem;
+    flex-direction: column;
+    justify-content: space-around;
+  }
+  .content h2 {
+    font-weight: bold;
+    font-size: xx-large;
+  }
+  .content span {
+    font-size: large;
+    font-weight: bolder;
+    text-decoration: underline;
+    text-decoration-color: #ead91a;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 4px;
+  }
+  .content span:hover {
+    color: #d90b16;
+    text-decoration-color: #d90b16;
+    cursor: pointer;
+  }
+  .divers-spacer {
+    width: 100%;
+    background-color: #ead91a;
+  }
+  .divers-wrapper {
+    width: 100%;
+    display: flex;
+    padding: 3rem;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+  }
+  .divers-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .divers-wrapper p {
+    color: #d90b16;
+    font-weight: bold;
+    text-align: center;
+    font-size: xx-large;
+  }
+  .divers-content .number {
+    color: #0b0b0b;
+    font-size: xxx-large;
+    font-weight: bolder;
+  }
+
+  @media (max-width: 1200px) {
+    .divers-wrapper p {
+      font-size: x-large;
+    }
+    .divers-content .number {
+      font-size: xx-large;
+    }
+  }
+
+  @media (max-width: 900px) {
+    .content-wrapper-row {
+      flex-direction: column;
+    }
+    .video-wrapper {
+      padding: 0;
+      width: 100%;
+    }
+    .blog-cta-wrapper {
+      padding: 0;
+      width: 100%;
+      justify-content: space-evenly;
+    }
+  }
+  @media (max-width: 720px) {
+    .divers-wrapper {
+      flex-direction: column;
+      gap: 4rem;
+    }
+    .divers-wrapper p {
+      font-size: xx-large;
+    }
+    .divers-content .number {
+      font-size: xxx-large;
+    }
+    .blog-cta-wrapper .content {
+      height: fit-content;
+    }
+    .content-wrapper-row {
+      padding: 3rem 1.5rem;
+    }
+  }
+</style>

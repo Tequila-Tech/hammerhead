@@ -1,0 +1,31 @@
+---
+interface Props {
+  title: string;
+  type: string;
+  href: string;
+}
+
+const { href, title, type } = Astro.props;
+---
+
+<astro-primary-cta>
+  <a class={type} href={href}>{title}</a>
+</astro-primary-cta>
+<style>
+  .primary-cta {
+    font-weight: bold;
+    display: flex;
+    text-align: center;
+    padding: 10px 25px;
+    align-items: center;
+    border-radius: 15px;
+    flex-direction: row;
+    justify-content: center;
+    background-color: #ead91a;
+  }
+  .primary-cta:hover {
+    background-color: #d90b16;
+    color: white;
+    cursor: pointer;
+  }
+</style>

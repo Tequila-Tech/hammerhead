@@ -1,0 +1,127 @@
+---
+import { Image } from "astro:assets";
+
+interface Props {
+  packageName: string;
+  price: string;
+}
+const { packageName, price } = Astro.props;
+---
+
+<priceCard>
+  <div class="main-card-wrapper">
+    <div class="title">
+      <h4>{packageName}</h4>
+    </div>
+    <div class="content">
+      <div class="price">
+        <span>{price}</span>
+        <p>Make your own!</p>
+      </div>
+      <div class="description">
+        <p> What's your dream vacation? We will make it happen. Contact us.</p>
+      </div>
+      <div class="policy">
+        <p>Have any questions please let us know, we'd be happy to answer</p>
+        <p> </p>
+      </div>
+    </div>
+    <div class="cta">
+      <a href="/Booning">Book Now</a>
+    </div>
+  </div>
+</priceCard>
+
+<style>
+  .main-card-wrapper {
+    height: fit-content;
+    min-height: 90vh;
+    max-width: 400px;
+    overflow: hidden;
+    border-radius: 15px;
+    background-color: #ead91a;
+  }
+  .title {
+    width: 100%;
+    padding: 2rem 0;
+    font-weight: bold;
+    font-size: xx-large;
+    text-align: center;
+    color: #fff;
+    background-color: #d90b16;
+  }
+  .content {
+    gap: 5rem;
+    display: flex;
+    color: #0b0b0b;
+    min-height: 100%;
+    height: fit-content;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .price {
+    width: 100%;
+    display: flex;
+    padding: 1rem;
+    color: #581515;
+    text-align: center;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .price span {
+    font-size: xxx-large;
+    font-weight: bolder;
+  }
+  .price p {
+    font-weight: bold;
+    font-size: x-large;
+  }
+  .description {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem 3rem;
+  }
+  .description p {
+    font-weight: bolder;
+    font-size: xx-large;
+  }
+  .item {
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+    padding: 0.3rem 0rem;
+  }
+  .icon {
+    width: 50px;
+  }
+  .item p {
+    padding-left: 1rem;
+  }
+  .policy {
+    color: #581515;
+    padding: 1rem 2rem;
+  }
+  .cta {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    justify-content: center;
+    padding: 2rem;
+  }
+  .cta a {
+    font-weight: bold;
+    width: fit-content;
+    font-size: larger;
+    padding: 1rem 3rem;
+    border-radius: 15px;
+    color: white;
+    background-color: #0b0b0b;
+  }
+  .cta a:hover {
+    background-color: #d90b16;
+    color: white;
+  }
+</style>

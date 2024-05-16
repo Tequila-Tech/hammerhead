@@ -1,0 +1,112 @@
+---
+import { Image } from "astro:assets";
+import mainLogo from "../../public/mainLogo.jpeg";
+---
+
+<footer>
+  <div class="footer-wrapper">
+    <div class="menu">
+      <div class="logo">
+        <Image
+          class="img"
+          src={mainLogo}
+          alt="Logo"
+          decoding="async"
+          loading="lazy"
+          loading="eager"
+        />
+      </div>
+      <div class="menu-list">
+        <li><a class="text-red" href="#">Home</a></li>
+        <li><a href="/packages">Packages</a></li>
+        <li><a href="/specialty">Specialty Dives</a></li>
+        <li><a href="/snorkel">Snorkel Tours</a></li>
+        <li><a href="/about">About Us</a></li>
+        <li
+          ><a
+            href="https://www.google.com/search?q=hammerhead+scuba+diving+cozumel&oq=hammer&gs_lcrp=EgZjaHJvbWUqBggCECMYJzIOCAAQRRg5GEMYgAQYigUyBwgBEC4YgAQyBggCECMYJzIMCAMQABhDGIAEGIoFMgwIBBAAGEMYgAQYigUyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQg0NDAzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x8f4e57005df3a099:0xe7e5a151dc640a4a,1,,,,"
+            target="_blank">Reviews</a
+          ></li
+        >
+        <li><a href="#">Blog</a></li>
+      </div>
+    </div>
+    <span class="line"></span>
+    <span class="derechos">
+      <p> © 2021 Hammer Head Cozumel. Todos los derechos reservados</p>
+    </span>
+    <div class="social-media">
+      <div class="social-media-content">
+        <a
+          href="https://www.google.com/search?q=hammerhead+scuba+diving+cozumel&oq=hammer&gs_lcrp=EgZjaHJvbWUqBggCECMYJzIOCAAQRRg5GEMYgAQYigUyBwgBEC4YgAQyBggCECMYJzIMCAMQABhDGIAEGIoFMgwIBBAAGEMYgAQYigUyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQg0NDAzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x8f4e57005df3a099:0xe7e5a151dc640a4a,1,,,,"
+          target="_blank">Instagram</a
+        >
+        <a
+          href="https://www.google.com/search?q=hammerhead+scuba+diving+cozumel&oq=hammer&gs_lcrp=EgZjaHJvbWUqBggCECMYJzIOCAAQRRg5GEMYgAQYigUyBwgBEC4YgAQyBggCECMYJzIMCAMQABhDGIAEGIoFMgwIBBAAGEMYgAQYigUyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQg0NDAzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x8f4e57005df3a099:0xe7e5a151dc640a4a,1,,,,"
+          target="_blank">Facebook</a
+        >
+        <a
+          href="https://www.google.com/search?q=hammerhead+scuba+diving+cozumel&oq=hammer&gs_lcrp=EgZjaHJvbWUqBggCECMYJzIOCAAQRRg5GEMYgAQYigUyBwgBEC4YgAQyBggCECMYJzIMCAMQABhDGIAEGIoFMgwIBBAAGEMYgAQYigUyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQg0NDAzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x8f4e57005df3a099:0xe7e5a151dc640a4a,1,,,,"
+          target="_blank">YouTube</a
+        >
+      </div>
+    </div>
+  </div>
+</footer>
+<style>
+  footer .footer-wrapper {
+    padding: 5rem;
+    display: flex;
+    flex-direction: column;
+    background-color: #000000;
+  }
+  footer .footer-wrapper .menu .logo .img {
+    height: 100px;
+    width: 100px;
+    margin: 0 auto;
+  }
+  footer .menu-list {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    list-style-type: none;
+    justify-content: center;
+  }
+
+  footer a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  footer li a:hover {
+    font-weight: bolder;
+  }
+  footer .footer-wrapper .line {
+    height: 2px;
+    width: 100%;
+    margin: 2rem auto;
+    max-width: 1000px;
+    background-color: #505050;
+  }
+  .social-media-content {
+    display: flex;
+    margin: 0 auto;
+    width: max-content;
+    flex-direction: row;
+  }
+  .derechos {
+    width: 100%;
+    color: white;
+    margin: 0 auto;
+    text-align: center;
+    max-width: max-content;
+  }
+  @media (max-width: 720px) {
+    footer .footer-wrapper {
+      padding: 5rem 1rem;
+    }
+  }
+</style>

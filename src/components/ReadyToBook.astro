@@ -1,0 +1,32 @@
+---
+import MainCtaBtn from "./MainCtaBtn.astro";
+---
+
+<readyToBook>
+  <div class="wrapper">
+    <div class="title">Ready to book?</div>
+    <MainCtaBtn />
+  </div>
+</readyToBook>
+<style>
+  readyToBook .wrapper {
+    gap: 3rem;
+    padding: 3rem 2rem;  
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    background-color: #ead91a;
+    justify-content: space-around;
+  }
+  readyToBook .wrapper .title {
+    font-weight: bolder;
+    font-size: xxx-large;
+  }
+  @media (max-width: 720px) {
+    readyToBook .wrapper .title {
+    }
+    readyToBook .wrapper {
+      flex-direction: column;
+    }
+  }
+</style>

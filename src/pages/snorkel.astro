@@ -1,0 +1,116 @@
+---
+import FormsToDownload from "../components/FormsToDownload.astro";
+import HeroImage from "../components/HeroImage.astro";
+import MainCtaBtn from "../components/MainCtaBtn.astro";
+import MiniGallery from "../components/MiniGallery.astro";
+import MiniLinks from "../components/MiniLinks.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Hammer Head Cozumel | Dive Shop">
+  <HeroImage
+    title="Snorkel Tours"
+    subtitle="Explore vibrant reefs, ancient wrecks, and marine marvels with our expert guides, we are here to make your experience unforgettable."
+    image="/public/snorkel2.webp"
+    alt="Girl snorkelink in a reef in Cozumel Mexico"
+  />
+  <div class="info-container">
+    <div class="wrapper">
+      <h2 class="title">
+        Fun Snorkel Tour. We take to 4 Fabulous Snorkel sites:
+      </h2>
+      <div class="content">
+        <p
+          >Colombia Reef/Palancar Reef: They are some of the most famous reefs
+          in the world and representative of the natural beauty of Cozumel.</p
+        >
+        <br />
+        <p
+          >El Cielito, crystal clear water, powdered white sand, shallow shore,
+          commonly surrounded by Southern Sting Rays.</p
+        >
+        <br />
+        <p
+          >El Cielo, is a Gorgeous sandbar, you can see Starfish, and have up
+          close encounters with marine life. And you also will enjoy the
+          delicious refreshments we prepared for you in beautiful scenery!</p
+        >
+        <br />
+        <span class="price">$60 USD Person</span>
+        <br />
+        <span class="price">$45 USD Kids</span>
+        <br />
+        <span class="minimum">
+          Minimum of 4 Adults and one child (5-11) free per 4 adults & and kids
+          from 12 years and on pay as an adult.
+        </span>
+        <br />
+        <br />
+        <div class="cta">
+          <MainCtaBtn />
+        </div>
+      </div>
+    </div>
+  </div>
+  <MiniGallery />
+  <MiniLinks
+    title1="Life under water in Cozumel"
+    title2="The Fascinating World of Bioluminescent Marine Life"
+    title3="The Majestic Manta Ray"
+    text1="Cozumel, Mexico, boasts vibrant coral reefs and diverse marine life, offering unforgettable diving and snorkeling experiences in crystal-clear waters."
+    text2="Dive into the enchanting phenomenon of bioluminescence in the ocean, where organisms emit light through chemical reactions, from tiny plankton to deep-sea fish"
+    text3="Manta rays, massive yet gentle filter feeders, navigate oceans with grace, captivating observers worldwide. Threatened by habitat loss and targeted fishing, conservation efforts focus on safeguarding their habitats and regulating trade."
+    link1="/blog"
+    link2="/blog"
+    link3="/blog"
+    imageurl="../../public/image123.jpg"
+  />
+  <FormsToDownload />
+</Layout>
+<style>
+  .info-container {
+    color: #fff;
+    padding: 3rem;
+    background-color: #111111;
+  }
+  .info-container .wrapper .title {
+    font-size: xxx-large;
+    font-weight: bolder;
+    text-align: center;
+  }
+  .info-container .wrapper .content {
+    width: 100%;
+    margin: 0 auto;
+    max-width: 900px;
+    font-size: larger;
+    padding: 2rem 3rem;
+  }
+  .info-container .wrapper .content p {
+    margin-top: 1rem;
+  }
+  .info-container .wrapper .content .price {
+    color: #fff;
+    font-size: x-large;
+    font-weight: bolder;
+  }
+  .info-container .wrapper .content .minimum {
+    color: #ead91a;
+    margin-top: 2rem;
+    font-weight: bolder;
+  }
+  .info-container .wrapper .content .cta {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    justify-content: center;
+  }
+
+  @media (max-width: 720px) {
+    .info-container {
+      padding: 2rem 1rem;
+    }
+    .info-container .wrapper .content {
+      padding: 2rem 1rem;
+    }
+  }
+</style>

@@ -1,0 +1,151 @@
+---
+import { Image } from "astro:assets";
+import blogWrapper1 from "../../public/blogWrapper1.jpg";
+---
+
+<formsToDownload>
+  <div class="forms-wrapper">
+    <div class="image">
+      <Image
+        class="image-item"
+        src={blogWrapper1}
+        alt="foto de 3 busos en un arrefice con uchos peces"
+      />
+    </div>
+    <div class="main-content-wrapper">
+      <div class="content-wrapper">
+        <h3 class="title">Your safety is important for us</h3>
+        <p class="content"
+          >Before jumping in the water, we want to make sure you are safe, so
+          please fill the following forms before diving</p
+        >
+      </div>
+      <div class="links">
+        <div class="download-item">
+          <span>Guest Registration</span>
+          <a href="#" download="Guest Registration Form" class="download-btn"
+            >Download</a
+          >
+        </div>
+        <div class="download-item">
+          <span>Liability Release</span>
+          <a href="#" download="Liability Release Form" class="download-btn"
+            >Download</a
+          >
+        </div>
+        <div class="download-item">
+          <span>Medical Form</span>
+          <a href="#" download="Medical Forms Form" class="download-btn"
+            >Download</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</formsToDownload>
+<style>
+  formsToDownload {
+    color: white;
+  }
+  formsToDownload .forms-wrapper {
+    position: relative;
+  }
+  formsToDownload .forms-wrapper .image-item {
+    width: 100%;
+    height: 100vh;
+    min-height: 1100px;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+
+  formsToDownload .forms-wrapper .main-content-wrapper {
+    /* POSITION STYLES */
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+
+    /* GENEAL STYLES */
+    gap: 4rem;
+    width: 80%;
+    display: flex;
+    margin: 0 auto;
+    align-items: center;
+    flex-direction: row;
+    min-width: min-content;
+    justify-content: space-around;
+  }
+  .main-content-wrapper .content-wrapper {
+    flex: 1;
+  }
+  .main-content-wrapper .content-wrapper .title {
+    text-align: center;
+    font-size: xxx-large;
+    text-shadow: #0b0b0b 2px 2px 20px;
+  }
+  .main-content-wrapper .content-wrapper .content {
+    font-size: large;
+    padding-top: 3rem;
+    text-align: center;
+    text-shadow: #0b0b0b 2px 2px 20px;
+  }
+  .links {
+    flex: 1;
+    gap: 3rem;
+    display: flex;
+    align-items: end;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .links .download-item {
+    display: flex;
+    flex-direction: row;
+  }
+  .links .download-item span {
+    font-size: larger;
+    width: max-content;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-color: #ead91a;
+    text-decoration-thickness: 3px;
+    text-shadow: #0b0b0b 2px 2px 20px;
+  }
+  .links .download-item .download-btn {
+    font-size: larger;
+    color: #0b0b0b;
+    font-weight: bold;
+    border-radius: 15px;
+    padding: 0.5rem 2rem;
+    margin-left: 2rem;
+    background-color: #ead91a;
+  }
+  .links .download-item .download-btn:hover {
+    background-color: #d90b16;
+    cursor: pointer;
+    color: white;
+  }
+  @media (max-width: 780px) {
+    formsToDownload .forms-wrapper .main-content-wrapper {
+      gap: 8rem;
+      padding: 5rem 0;
+      flex-direction: column;
+    }
+    .links .download-item {
+      gap: 1rem;
+      align-items: center;
+    }
+    .links .download-item .download-btn {
+      margin: 0 auto;
+    }
+  }
+  @media (max-width: 380px) {
+    .links .download-item {
+      flex-direction: column;
+    }
+  }
+  @media (max-width: 400px) {
+    .links .download-item .download-btn {
+      padding: 0.5rem 1.5rem;
+    }
+  }
+</style>

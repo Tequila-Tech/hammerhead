@@ -1,0 +1,67 @@
+---
+import HeroCtaBtn from "./HeroCtaBtn.astro";
+interface Props {
+  title: string;
+  subtitle: string;
+  image: string;
+  alt: string;
+}
+
+const { subtitle, title, image, alt } = Astro.props;
+---
+
+<astro-hero>
+  <div class="hero-wrapper">
+    <img src={image} alt={alt} />
+    <div class="content">
+      <h1>{title}</h1>
+      <p>{subtitle}</p>
+      <br />
+      <HeroCtaBtn />
+    </div>
+  </div>
+</astro-hero>
+<style>
+  astro-hero .hero-wrapper {
+    width: 100%;
+    min-height: fit-content;
+    position: relative;
+    height: fit-content;
+  }
+  astro-hero .hero-wrapper img {
+    height: 80vh;
+    width: 100%;
+    object-fit: cover;
+    opacity: 0.5;
+  }
+  astro-hero .hero-wrapper .content {
+    top: 50%;
+    left: 3rem;
+    width: 70%;
+    max-width: 900px;
+    position: absolute;
+    transform: translate(0%, -50%);
+    color: white;
+    padding: 3rem;
+  }
+  astro-hero h1 {
+    font-weight: bolder;
+    font-size: xxx-large;
+  }
+
+  @media (max-height: 430px) {
+    astro-hero .hero-wrapper {
+      min-height: min-content;
+    }
+    astro-hero .hero-wrapper img {
+      height: 100vh;
+    }
+  }
+  @media (max-width: 720px) {
+    astro-hero .hero-wrapper .content {
+      width: 100%;
+      left: 0;
+      padding: 3rem 1rem;
+    }
+  }
+</style>

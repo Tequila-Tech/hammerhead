@@ -1,0 +1,121 @@
+---
+import { Image } from "astro:assets";
+interface Props {
+  title1: string;
+  text1: string;
+  link1: string;
+  title2: string;
+  text2: string;
+  link2: string;
+  title3: string;
+  text3: string;
+  link3: string;
+  imageurl: string;
+}
+
+const { title1, text1, link1, title2, text2, link2, title3, text3, link3, imageurl } =
+  Astro.props;
+---
+
+<miniLinks>
+  <img
+    class="image"
+    src={imageurl}
+    alt="Life Savers on a rack insde the boat"
+  />
+  <div class="wrapper">
+    <div class="link-item">
+      <h4>{title1}</h4>
+      <p>{text1}</p>
+      <a href={link1}>Learn More</a>
+    </div>
+    <div class="link-item">
+      <h4>{title2}</h4>
+      <p>{text2}</p>
+      <a href={link2}>Learn More</a>
+    </div>
+    <div class="link-item">
+      <h4>{title3}</h4>
+      <p>{text3}</p>
+      <a href={link3}>Learn More</a>
+    </div>
+  </div>
+</miniLinks>
+<style>
+  miniLinks {
+    position: relative;
+    background-color: #0b0b0b;
+    display: flex;
+  }
+  miniLinks .image {
+    width: 100%;
+    opacity: 0.4;
+    height: 100%;
+    object-fit: cover;
+    mix-blend-mode: lighten;
+  }
+  miniLinks .wrapper {
+    position: absolute;
+    top: 50%;
+    gap: 5rem;
+    left: 50%;
+    width: 100%;
+    color: white;
+    height: 100%;
+    display: flex;
+    padding: 3rem;
+    align-items: center;
+    flex-direction: row;
+    justify-content: space-around;
+    transform: translate(-50%, -50%);
+  }
+  miniLinks .wrapper .link-item {
+    gap: 2rem;
+    display: flex;
+    max-width: 380px;
+    flex-direction: column;
+  }
+  .link-item h4 {
+    font-size: xx-large;
+    font-weight: bold;
+    text-shadow: #0b0b0b 2px 2px 20px;
+  }
+  .link-item p {
+    text-shadow: #0b0b0b 2px 2px 20px;
+  }
+  .link-item a {
+    text-shadow: #0b0b0b 2px 2px 20px;
+    text-decoration: underline;
+    text-decoration-color: #ead91a;
+    text-decoration-thickness: 5px;
+    text-underline-offset: 4px;
+  }
+  .link-item a:hover {
+    color: #ead91a;
+  }
+  @media (max-width: 900px) {
+    .link-item h4 {
+      font-size: x-large;
+    }
+  }
+  @media (max-width: 720px) {
+    miniLinks .wrapper {
+      flex-direction: column;
+    }
+    miniLinks .image {
+      height: 100vh;
+      min-height: 1800px;
+    }
+    miniLinks .wrapper .link-item {
+      gap: 2rem;
+      display: flex;
+      text-align: center;
+      align-items: center;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .link-item h4 {
+      font-size: xxx-large;
+    }
+  }
+</style>
