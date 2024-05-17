@@ -1,26 +1,3 @@
 {
-  "compilerOptions": {
-    "target": "ESNext",
-    "module": "ESNext",
-    "moduleResolution": "node",
-    "lib": [
-      "ESNext",
-      "DOM"
-    ],
-    "jsx": "react-jsx",
-    "allowJs": true,
-    "skipLibCheck": true,
-    "strict": true,
-    "forceConsistentCasingInFileNames": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "noEmit": true,
-    "types": [
-      "@astro/types"
-    ]
-  },
-  "include": [
-    "src"
-  ]
+  "extends": "astro/tsconfigs/base"
 }
