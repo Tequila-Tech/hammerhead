@@ -1,13 +1,10 @@
 ---
-import { Image } from "astro:assets";
-import mostRequestedReef from "../..//public/mostRequestedReef.jpg";
-import MainCtaBtn from "../components/MainCtaBtn.astro"
+import MainCtaBtn from "../components/MainCtaBtn.astro";
 interface props {
   title: string;
   content: string;
 }
 const { title, content } = Astro.props;
-const alt = "Photo of a reef with a clown fish coming out";
 ---
 
 <div class="most-requested-wrapper">
@@ -20,7 +17,11 @@ const alt = "Photo of a reef with a clown fish coming out";
       </div>
     </div>
     <div class="image">
-      <Image class="image-item" src={mostRequestedReef} alt={alt} />
+      <img
+        class="image-item"
+        src="/mostRequestedReef.jpg"
+        alt="Photo of a reef with a clown fish coming out"
+      />
     </div>
   </div>
 </div>
@@ -62,7 +63,7 @@ const alt = "Photo of a reef with a clown fish coming out";
       padding: 2rem 1rem;
     }
     .content {
-        padding: 3rem 0;
+      padding: 3rem 0;
     }
   }
 </style>
