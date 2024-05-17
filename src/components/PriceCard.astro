@@ -75,7 +75,7 @@ const { packageName, price, dives } = Astro.props;
     overflow-x: hidden;
     max-width: 400px;
     height: fit-content;
-    min-height: 90vh;
+    min-height: 80vh;
   }
   .title {
     width: 100%;
@@ -118,10 +118,11 @@ const { packageName, price, dives } = Astro.props;
     align-items: center;
     flex-direction: row;
     justify-content: center;
-    padding: 0.3rem 0rem;
+    padding: 0.2rem 0rem;
   }
   .icon {
-    width: 50px;
+    width: 40px;
+    height: 40px;
   }
   .item p {
     padding-left: 1rem;
@@ -138,12 +139,13 @@ const { packageName, price, dives } = Astro.props;
     padding: 2rem;
   }
   .cta a {
+    color: white;
+    font-size: larger;
     font-weight: bold;
     width: fit-content;
-    font-size: larger;
     padding: 1rem 3rem;
     border-radius: 15px;
-    color: white;
+    text-decoration: none;
     background-color: #0b0b0b;
   }
   .cta a:hover {

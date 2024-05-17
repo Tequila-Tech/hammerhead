@@ -1,25 +1,26 @@
 ---
 interface Props {
   title: string;
-  type: string;
   href: string;
 }
 
-const { href, title, type } = Astro.props;
+const { href, title } = Astro.props;
 ---
 
 <astro-primary-cta>
-  <a class={type} href={href}>{title}</a>
+  <a class="primary-cta" href={href}>{title}</a>
 </astro-primary-cta>
 <style>
   .primary-cta {
-    font-weight: bold;
     display: flex;
+    color: #000;
+    font-weight: bold;
     text-align: center;
-    padding: 10px 25px;
+    padding: 1rem 2.5rem;
     align-items: center;
-    border-radius: 15px;
     flex-direction: row;
+    border-radius: 15px;
+    text-decoration: none;
     justify-content: center;
     background-color: #ead91a;
   }
