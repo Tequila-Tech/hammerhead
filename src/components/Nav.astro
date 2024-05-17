@@ -2,7 +2,7 @@
 import PrimaryCta from "./PrimaryCta.astro";
 ---
 
-<astro-nav class="main-wrapper">
+<nav class="main-wrapper">
   <div class="logo">
     <img
       class="img"
@@ -10,7 +10,6 @@ import PrimaryCta from "./PrimaryCta.astro";
       alt="Logo"
       decoding="async"
       loading="lazy"
-      loading="eager"
     />
   </div>
   <ul class="nav-list">
@@ -19,12 +18,12 @@ import PrimaryCta from "./PrimaryCta.astro";
     <li><a href="/specialty">Specialty Dives</a></li>
     <li><a href="/snorkel">Snorkel Tours</a></li>
     <li><a href="/about">About Us</a></li>
-    <li
-      ><a
+    <li>
+      <a
         href="https://www.google.com/search?q=hammerhead+scuba+diving+cozumel&oq=hammer&gs_lcrp=EgZjaHJvbWUqBggCECMYJzIOCAAQRRg5GEMYgAQYigUyBwgBEC4YgAQyBggCECMYJzIMCAMQABhDGIAEGIoFMgwIBBAAGEMYgAQYigUyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQg0NDAzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x8f4e57005df3a099:0xe7e5a151dc640a4a,1,,,,"
         target="_blank">Reviews</a
-      ></li
-    >
+      >
+    </li>
     <li><a href="#">Blog</a></li>
   </ul>
   <div class="cta">
@@ -43,10 +42,10 @@ import PrimaryCta from "./PrimaryCta.astro";
         fill-rule="evenodd"
         d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
       ></path>
-    </svg></div
-  >
-</astro-nav>
-<!-- Function Nav opener -->
+    </svg>
+  </div>
+</nav>
+
 <script>
   const tgt = document.querySelector("#tgt");
   if (tgt !== null) {
@@ -66,10 +65,8 @@ import PrimaryCta from "./PrimaryCta.astro";
   }
 </script>
 
-<!-- Styles -->
-
 <style>
-  astro-nav {
+  nav.main-wrapper {
     display: flex;
     padding: 10px;
     position: relative;
@@ -77,19 +74,19 @@ import PrimaryCta from "./PrimaryCta.astro";
     justify-content: space-around;
     background-color: #0b0b0b;
   }
-  astro-nav.active {
+  nav.main-wrapper.active {
     flex-direction: column;
   }
 
-  astro-nav .logo {
+  nav .logo {
     margin: auto;
   }
-  astro-nav .logo .img {
+  nav .logo .img {
     height: 80px;
     width: 80px;
   }
 
-  astro-nav .nav-list {
+  nav .nav-list {
     display: flex;
     padding: 1rem;
     align-items: baseline;
@@ -97,7 +94,7 @@ import PrimaryCta from "./PrimaryCta.astro";
     justify-content: space-around;
   }
 
-  astro-nav .nav-list.active {
+  nav .nav-list.active {
     width: 100%;
     overflow: visible;
     display: flex;
@@ -106,11 +103,11 @@ import PrimaryCta from "./PrimaryCta.astro";
     height: min-content;
   }
 
-  astro-nav li {
+  nav li {
     float: left;
   }
 
-  astro-nav li a {
+  nav li a {
     display: block;
     color: white;
     text-align: center;
@@ -118,11 +115,11 @@ import PrimaryCta from "./PrimaryCta.astro";
     text-decoration: none;
   }
 
-  astro-nav li a:hover {
+  nav li a:hover {
     font-weight: bolder;
   }
 
-  astro-nav .cta {
+  nav .cta {
     margin: auto;
     display: flex;
     overflow: hidden;
@@ -130,7 +127,7 @@ import PrimaryCta from "./PrimaryCta.astro";
     list-style-type: none;
     justify-content: center;
   }
-  astro-nav .toggle {
+  nav .toggle {
     top: 15px;
     right: 30px;
     display: none;
@@ -138,25 +135,25 @@ import PrimaryCta from "./PrimaryCta.astro";
   }
 
   @media (max-width: 780px) {
-    astro-nav {
+    nav {
       font-size: smaller;
     }
-    astro-nav .nav-list {
+    nav .nav-list {
       display: none;
       gap: 1rem 0;
       font-size: x-large;
       align-items: center;
       justify-content: center;
     }
-    astro-nav .cta {
+    nav .cta {
       display: none;
     }
-    astro-nav .toggle {
+    nav .toggle {
       margin: auto;
       display: block;
       background-color: white;
     }
-    astro-nav .toggle:hover {
+    nav .toggle:hover {
       cursor: pointer;
     }
   }
