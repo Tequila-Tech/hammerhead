@@ -1,12 +1,4 @@
 ---
-import { Image } from "astro:assets";
-import captain from "./captain.png";
-import tank from "./tank.png";
-import sandwich from "./sandwich.png";
-import weight from "./weight.png";
-import water from "./water.png";
-import fruit from "./fruit.png";
-
 const captainAlt = "GUIDED BOAT DIVE";
 const sandwichAlt = "SANDWICHES";
 const weightAlt = "WEIGHTS";
@@ -33,27 +25,27 @@ const { packageName, price, dives } = Astro.props;
       </div>
       <div class="description">
         <div class="item">
-          <Image class="icon" src={captain} alt={captainAlt} />
+          <img class="icon" src="/captain.png" alt={captainAlt} />
           <p>{captainAlt}</p>
         </div>
         <div class="item">
-          <Image class="icon" src={tank} alt={dives} />
+          <img class="icon" src="/tank.png" alt={dives} />
           <p>{dives}</p>
         </div>
         <div class="item">
-          <Image class="icon" src={sandwich} alt={sandwichAlt} />
+          <img class="icon" src="/sandwich.png" alt={sandwichAlt} />
           <p>{sandwichAlt}</p>
         </div>
         <div class="item">
-          <Image class="icon" src={weight} alt={weightAlt} />
+          <img class="icon" src="/weight.png" alt={weightAlt} />
           <p>{weightAlt}</p>
         </div>
         <div class="item">
-          <Image class="icon" src={water} alt={waterAlt} />
+          <img class="icon" src="/water.png" alt={waterAlt} />
           <p>{waterAlt}</p>
         </div>
         <div class="item">
-          <Image class="icon" src={fruit} alt={fruitAlt} />
+          <img class="icon" src="/fruit.png" alt={fruitAlt} />
           <p>{fruitAlt}</p>
         </div>
       </div>
