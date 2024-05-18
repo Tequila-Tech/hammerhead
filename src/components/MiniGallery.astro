@@ -1,37 +1,28 @@
----
-import { Image } from "astro:assets";
-import image1 from "./miniGallery/image1.jpeg";
-import image2 from "./miniGallery/image2.jpg";
-import image3 from "./miniGallery/image3.webp";
-import image4 from "./miniGallery/image4.jpeg";
-import image5 from "./miniGallery/image5.jpeg";
----
-
 <miniGallery>
   <div class="wrapper">
-    <Image
+    <img
       class="image"
-      src={image1}
+      src="/miniGallery/image1.jpeg"
       alt="boy and girl snorkeling at el cielo reef in cozumel"
     />
-    <Image
+    <img
       class="image"
-      src={image2}
+      src="/miniGallery/image2.jpg"
       alt="two people snorkeling but camera is also showing above water level"
     />
-    <Image
+    <img
       class="image"
-      src={image3}
+      src="/miniGallery/image3.webp"
       alt="girl snorkeling down to a reef in Cozumel Mexico's blue water"
     />
-    <Image
+    <img
       class="image"
-      src={image4}
+      src="/miniGallery/image4.jpeg"
       alt="Girl snorkeling next to a sea turtle in Cozumel's turtle reel"
     />
-    <Image
+    <img
       class="image"
-      src={image5}
+      src="/miniGallery/image5.jpeg"
       alt="Guy snorkels with large school of fish looks at camera and says hi"
     />
   </div>
