@@ -1,0 +1,160 @@
+---
+import PrimaryCta from "../components/PrimaryCta.astro";
+---
+
+<nav class="main-wrapper">
+  <div class="logo">
+    <img
+      class="img"
+      src="/mainLogo.jpeg"
+      alt="Logo"
+      decoding="async"
+      loading="lazy"
+    />
+  </div>
+  <ul class="nav-list">
+    <li><a class="text-red" href="/">Home</a></li>
+    <li><a href="/packages">Packages</a></li>
+    <li><a href="/specialty">Specialty Dives</a></li>
+    <li><a href="/snorkel">Snorkel Tours</a></li>
+    <li><a href="/about">About Us</a></li>
+    <li>
+      <a
+        href="https://www.google.com/search?q=hammerhead+scuba+diving+cozumel&oq=hammer&gs_lcrp=EgZjaHJvbWUqBggCECMYJzIOCAAQRRg5GEMYgAQYigUyBwgBEC4YgAQyBggCECMYJzIMCAMQABhDGIAEGIoFMgwIBBAAGEMYgAQYigUyBggFEEUYPDIGCAYQRRg8MgYIBxBFGDzSAQg0NDAzajBqN6gCALACAA&sourceid=chrome&ie=UTF-8#lrd=0x8f4e57005df3a099:0xe7e5a151dc640a4a,1,,,,"
+        target="_blank">Reviews</a
+      >
+    </li>
+    <li><a href="#">Blog</a></li>
+  </ul>
+  <div class="cta">
+    <PrimaryCta href="/booking" title="Book Now" />
+  </div>
+  <div class="toggle" id="tgt">
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="50"
+      height="50"
+      fill="currentColor"
+      class="bi bi-list"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5m0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5"
+      ></path>
+    </svg>
+  </div>
+</nav>
+
+<script>
+  const tgt = document.querySelector("#tgt");
+  if (tgt !== null) {
+    tgt.addEventListener("click", () => {
+      console.log("Toggle button clicked");
+
+      const navList = document.querySelector(".nav-list");
+      if (navList !== null) {
+        navList.classList.toggle("active");
+      }
+
+      const Wrapper = document.querySelector(".main-wrapper");
+      if (Wrapper !== null) {
+        Wrapper.classList.toggle("active");
+      }
+    });
+  }
+</script>
+
+<style>
+  nav.main-wrapper {
+    display: flex;
+    padding: 10px;
+    position: relative;
+    flex-direction: row;
+    justify-content: space-around;
+    background-color: #0b0b0b;
+  }
+  nav.main-wrapper.active {
+    flex-direction: column;
+  }
+
+  nav .logo {
+    margin: auto;
+  }
+  nav .logo .img {
+    height: 80px;
+    width: 80px;
+  }
+
+  nav .nav-list {
+    display: flex;
+    padding: 1rem;
+    align-items: baseline;
+    list-style-type: none;
+    justify-content: space-around;
+  }
+
+  nav .nav-list.active {
+    width: 100%;
+    overflow: visible;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* adjust as needed */
+    height: min-content;
+  }
+
+  nav li {
+    float: left;
+  }
+
+  nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+  }
+
+  nav li a:hover {
+    font-weight: bolder;
+  }
+
+  nav .cta {
+    margin: auto;
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    list-style-type: none;
+    justify-content: center;
+  }
+  nav .toggle {
+    top: 15px;
+    right: 30px;
+    display: none;
+    position: absolute;
+  }
+
+  @media (max-width: 780px) {
+    nav {
+      font-size: smaller;
+    }
+    nav .nav-list {
+      display: none;
+      gap: 1rem 0;
+      font-size: x-large;
+      align-items: center;
+      justify-content: center;
+    }
+    nav .cta {
+      display: none;
+    }
+    nav .toggle {
+      margin: auto;
+      display: block;
+      background-color: white;
+    }
+    nav .toggle:hover {
+      cursor: pointer;
+    }
+  }
+</style>
