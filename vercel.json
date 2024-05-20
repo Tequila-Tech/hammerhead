@@ -11,12 +11,7 @@
     "routes": [
         {
             "src": "/(.*)",
-            "dest": "/"
+            "dest": "/index.html"
         }
-    ],
-    "functions": {
-        "_render": {
-            "runtime": "nodejs18.x"
-        }
-    }
+    ]
 }
