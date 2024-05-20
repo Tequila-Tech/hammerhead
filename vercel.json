@@ -13,5 +13,10 @@
             "src": "/(.*)",
             "dest": "/"
         }
-    ]
+    ],
+    "functions": {
+        "_render": {
+            "runtime": "nodejs18.x"
+        }
+    }
 }
