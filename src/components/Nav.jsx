@@ -34,7 +34,7 @@ const NavBar = () => {
             Reviews
           </a>
         </li>
-        <li><a href="#">Blog</a></li>
+        <li><a href="/blog">Blog</a></li>
       </ul>
       <div className="cta">
         <a className="primary-cta" href="/booking">Book Now</a>
