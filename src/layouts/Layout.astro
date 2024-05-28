@@ -1,26 +1,32 @@
 ---
 import Footer from "../components/Footer.astro";
 import Nav from "../components/Nav.jsx";
-import { ViewTransitions } from "astro:transitions";
+import { renderToString } from "react-dom/server";
+import App from "../components/App.jsx";
+
 interface Props {
   title: string;
 }
 
 const { title } = Astro.props;
 ---
-
-<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta name="description" content="Astro description" />
+    <meta
+      name="description"
+      content="Hammer Head Cozumel Scuba diving and snorkel shop"
+    />
     <meta name="viewport" content="width=device-width" />
     <link rel="icon" type="image/svg+xml" href="/favicon.png" />
+    <link rel="icon" href="/snorkel2.webp" type="image" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/snorkel2.webp" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/snorkel2.webp" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/snorkel2.webp" />
     <meta name="generator" content={Astro.generator} />
-    <ViewTransitions />
     <title>{title}</title>
   </head>
-  <body>
+  <body>    
     <div class="body-wrapper">
       <Nav client:load />
       <slot />
@@ -44,15 +50,8 @@ const { title } = Astro.props;
         background-size: 224px;
       }
       code {
-        font-family:
-          Menlo,
-          Monaco,
-          Lucida Console,
-          Liberation Mono,
-          DejaVu Sans Mono,
-          Bitstream Vera Sans Mono,
-          Courier New,
-          monospace;
+        font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
+          DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
       }
       body {
         margin: 0;
@@ -67,5 +66,5 @@ const { title } = Astro.props;
         box-sizing: border-box;
       }
     </style>
-  </body></html
->
+  </body>
+</html>

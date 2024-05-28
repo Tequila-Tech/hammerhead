@@ -1,6 +1,7 @@
 ---
+import { Image } from "astro:assets";
 import MainCtaBtn from "../components/MainCtaBtn.astro";
-interface props {
+interface Props {
   title: string;
   content: string;
   content2: string;
@@ -20,7 +21,14 @@ const alt = "Photo of a reef with a clown fish coming out";
       </div>
     </div>
     <div class="image">
-      <img class="image-item" src="/lionFish.jpg" alt={alt} />
+      <Image
+        width="200"
+        height="150"
+        format="webp"
+        class="image-item"
+        src="/lionFish.jpg"
+        alt={alt}
+      />
     </div>
   </div>
 </div>

@@ -1,81 +1,11 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Main from "../layouts/Main.astro";
+import BlogList from "../components/BlogList";
 ---
 
-<!-- Green Text Color #022c23 -->
-<Layout title="Blog | Newest">
-  <div class="blog-container">
-    <div class="sidebar">
-      <h3>Previous Posts</h3>
-      <ul class="post-list">
-        <li><a href="#">Post Title 1</a></li>
-        <li><a href="#">Post Title 2</a></li>
-        <!-- Add more links to previous posts as needed -->
-      </ul>
-    </div>
-    <div class="blog-posts">
-      <div class="blog-post">
-        <h2>Post Title 1</h2>
-        <p>Content of the first blog post...</p>
-      </div>
-      <div class="blog-post">
-        <h2>Post Title 2</h2>
-        <p>Content of the second blog post...</p>
-      </div>
-      <div class="blog-post">
-        <h2>Post Title 3</h2>
-        <p>Content of the second blog post...</p>
-      </div>
-      <div class="blog-post">
-        <h2>Post Title 4</h2>
-        <p>Content of the second blog post...</p>
-      </div>
-      <!-- Add more blog posts as needed -->
-    </div>
-  </div>
+<Layout title="blog">
+  <Main>
+    <BlogList client:load />
+  </Main>
 </Layout>
-<style>
-  .blog-container {
-    margin: auto;
-    display: flex;
-    padding: 4rem;
-    background-color: #fff;
-    color: #022c23;
-    max-width: 1000px;
-  }
-  .blog-content {
-    display: flex;
-    flex: 1;
-  }
-  .blog-posts {
-    flex: 2;
-  }
-  .sidebar {
-    flex: 1;
-    padding: 20px;
-    margin-right: 2rem;
-    border-right: 1px solid #ccc;
-  }
-  .post-list {
-    list-style: none;
-    padding: 0;
-  }
-  .post-list li {
-    margin-bottom: 10px;
-  }
-  .post-list li a {
-    text-decoration: none;
-    color: #333;
-  }
-  .post-list li a:hover {
-    text-decoration: underline;
-  }
-  @media (max-width: 780px) {
-    .blog-container {
-      padding: 1rem;
-    }
-    .sidebar {
-      padding: 0;
-    }
-  }
-</style>

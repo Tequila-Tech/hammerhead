@@ -1,13 +1,16 @@
 nav.main-wrapper {
   display: flex;
   padding: 10px;
+  gap: 10px;
   position: relative;
   flex-direction: row;
   justify-content: space-around;
-  background-color: #0b0b0b;
+  background-color: #000000;
+  transition: all .3s ease-in-out;
 }
 nav.main-wrapper.active {
   flex-direction: column;
+  padding: 8rem 0;
 }
 
 nav .logo {
@@ -28,11 +31,11 @@ nav .nav-list {
 
 nav .nav-list.active {
   width: 100%;
-  overflow: visible;
   display: flex;
-  flex-direction: column;
-  min-height: 100vh;
+  min-height: 60vh;
+  overflow: visible;
   height: min-content;
+  flex-direction: column;
 }
 
 nav li {
@@ -89,16 +92,13 @@ nav .toggle {
   }
   nav .nav-list {
     display: none;
-    gap: 1rem 0;
+    gap: .5rem 0;
     font-size: x-large;
     align-items: center;
     justify-content: center;
   }
   nav .nav-list.active {
     display: flex;
-  }
-  nav .cta {
-    display: none;
   }
   nav .toggle {
     margin: auto;

@@ -1,0 +1,81 @@
+---
+import { Image } from "astro:assets";
+interface Props {
+  name: string;
+  role: string;
+  img: string;
+  alt: string;
+  description: string;
+}
+
+const { name, role, img, alt, description } = Astro.props;
+---
+
+<div class="staff-wrapper">
+  <div class="wrapper">
+    <div class="content">
+      <h3 class="name">{name}</h3>
+      <span class="role">{role}</span>
+      <br />
+      <br />
+      <p class="description">{description}</p>
+    </div>
+    <div class="image">
+      <Image
+        src={img}
+        alt={alt}
+        width="200"
+        height="150"
+        format="webp"
+        class="img"
+      />
+    </div>
+  </div>
+</div>
+
+<style>
+  .staff-wrapper {
+    color: #fff;
+  }
+  .wrapper {
+    gap: 2rem;
+    display: flex;
+    padding: 2rem;
+    margin: 0 auto;
+    max-width: 800px;
+    align-items: center;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .content {
+    flex: 1;
+  }
+  .name {
+    font-size: xx-large;
+    font-weight: normal;
+  }
+  .role {
+    font-size: large;
+    color: #ead91a;
+  }
+  .image {
+    flex: 1;
+  }
+  .image .img {
+    width: 100%;
+    height: 300px;
+    object-fit: cover;
+  }
+  @media (max-width: 720px) {
+    .wrapper {
+      flex-direction: column;
+    }
+    .image {
+      width: 100%;
+    }
+    .image .img {
+      width: 100%;
+      object-fit: cover;
+    }
+  }
+</style>

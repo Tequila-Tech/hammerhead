@@ -1,6 +1,135 @@
 ---
+import HeroImage from "../components/HeroImage.astro";
+import ReadyToBook from "../components/ReadyToBook.astro";
+import Staff from "../components/staff.astro";
+import StaffReversed from "../components/StaffReversed.astro";
 import Layout from "../layouts/Layout.astro";
+import Boat from "../components/Boat.astro";
+import AbMaps from "../components/AbMaps.astro";
+import MiniLinks from "../components/MiniLinks.astro";
 ---
 
-<Layout title="About us | Hammer Head Cozumel">y
+<Layout title="About us | Hammer Head Cozumel">
+  <HeroImage
+    title="About US"
+    subtitle="Learn who we are and meet the team"
+    image="/AboutUs.jpg"
+    alt="Hammer Head team, Claudia and Jesus"
+  />
+  <div class="mission-statement">
+    <div class="m-wrapper">
+      <h2>Mission Statement</h2>
+      <br />
+      <br />
+      <p
+        >Hammerhead Diving and Snorkeling's mission is to provide our valued
+        clients with a safe and exceptional diving experience in the beautiful
+        Caribbean waters of Cozumel. We aim to respect the experience and
+        capabilities of our divers while prioritizing the preservation of the
+        delicate underwater environment.
+      </p>
+    </div>
+  </div>
+  <div class="meet-the-staff">
+    <h2>Meet the staff</h2>
+    <br />
+    <Staff
+      name="Claudia"
+      role="Customer Care Specialist"
+      description="With 23 years of experience in the customer service industry, Claudia is fluent in Spanish and English, and she also has some proficiency in French, with ongoing studies in other languages. As your initial point of contact for your Cozumel dive adventure, Claudia takes great pride in ensuring that your questions are answered accurately. She strives to make sure you feel comfortable and confident in choosing Hammerhead Diving."
+      img="/Claudia.jpg"
+      alt="Claudia"
+    />
+    <br />
+    <StaffReversed
+      name="Jesus"
+      role="General Manager & Head Dive Master"
+      description="Fluent in both Spanish and English, with over 26 years of experience as a Divemaster in Cozumel, Jesus stands out for his unmatched expertise in guiding dives in these waters. Few locals can rival his knowledge. Jesus excels in tailoring dives to match each diver's experience and skill level. Advocating the 'dive your tank' approach, he is passionate about his work, evident in his dedication. In his own words, 'You may be a tourist, but to us, you're family,' so you don't have to dive like a tourist."
+      img="/Jesus.jpg"
+      alt="Jesus"
+    />
+    <br />
+    <Staff
+      name="Jeobani"
+      role="Captain"
+      description="Experienced divers know the significance of a skilled Captain as much as a capable Dive Master. With over 30 years of experience as a Dive Master, Jeobani possesses exceptional boat handling skills in all conditions. His firsthand experience as a diver informs his understanding of what divers need from their captain. Fluent in Spanish and English, he excels in diver service."
+      img="/Jeobani.jpg"
+      alt="Jeobani"
+    />
+  </div>
+  <ReadyToBook />
+  <div class="our-boat">
+    <h2>Boat and Location</h2>
+    <Boat
+      name="Fast boat"
+      url="https://www.instagram.com/hammerheadcozumel/"
+      role="Play Videos From Instagram"
+      description="Hammerhead is 8 feet long, 8.25 feet beam width, set up specifically for diving- accommodates 8 divers comfortably."
+      img="/ourBoat.png"
+      alt="hammer head boat"
+    />
+    <AbMaps
+      name="Cozumel Mexico"
+      url="https://www.google.com/maps/place/Hammerhead+Cozumel+Diving+%26+Snorkeling/@20.488113,-86.9705845,17z/data=!3m1!4b1!4m6!3m5!1s0x8f4e57005df3a099:0xe7e5a151dc640a4a!8m2!3d20.488108!4d-86.9680096!16s%2Fg%2F11vsykp1gv?entry=ttu"
+      role="See on Goole maps"
+      description="Hotel Villa Blanca, Local 1, Carretera Costera Sur, Kilometro 3 Zona Hotelera Sur, Cozumel Q, Roo"
+      img="/mapLocation.png"
+      alt="hammer head boat"
+    />
+  </div>
+  <MiniLinks
+    title1="Life under water in Cozumel"
+    title2="The Fascinating World of Bioluminescent Marine Life"
+    title3="The Majestic Manta Ray"
+    text1="Cozumel, Mexico, boasts vibrant coral reefs and diverse marine life, offering unforgettable diving and snorkeling experiences in crystal-clear waters."
+    text2="Dive into the enchanting phenomenon of bioluminescence in the ocean, where organisms emit light through chemical reactions, from tiny plankton to deep-sea fish"
+    text3="Manta rays, massive yet gentle filter feeders, navigate oceans with grace, captivating observers worldwide. Threatened by habitat loss and targeted fishing, conservation efforts focus on safeguarding their habitats and regulating trade."
+    link1="/blog"
+    link2="/blog"
+    link3="/blog"
+    imageurl="/image123.jpg"
+  />
 </Layout>
+<style>
+  .mission-statement {
+    background-color: #fff;
+    padding: 5rem;
+  }
+  .m-wrapper {
+    max-width: 1080px;
+    margin: 0 auto;
+  }
+  .m-wrapper h2 {
+    font-size: xxx-large;
+  }
+  .meet-the-staff {
+    gap: 2rem;
+    padding: 4rem 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+  .meet-the-staff h2 {
+    font-size: xxx-large;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  .our-boat {
+    gap: 2rem;
+    padding: 4rem 0;
+    color: #fff;
+    display: flex;
+    flex-direction: column;
+  }
+  .our-boat h2 {
+    color:;
+    font-size: xxx-large;
+    text-align: center;
+    padding: 2rem 0;
+  }
+  @media (max-width: 780px) {
+    .mission-statement {
+      padding: 4rem 2rem;
+    }
+  }
+</style>

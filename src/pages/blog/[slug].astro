@@ -1,0 +1,47 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import { db } from "../../firebase";
+import { collection, getDocs, query, where } from "firebase/firestore";
+
+type Post = {
+  id: string;
+  slug: string;
+  title: string;
+  content: string;
+  date: string;
+};
+
+export async function getStaticPaths() {
+  const postsCol = collection(db, "posts");
+  const postSnapshot = await getDocs(postsCol);
+  const postList = postSnapshot.docs.map((doc) => ({
+    id: doc.id,
+    ...doc.data(),
+  })) as Post[];
+
+  return postList.map((post) => ({
+    params: { slug: post.slug },
+  }));
+}
+
+const { slug } = Astro.params;
+const postsCol = collection(db, "posts");
+const q = query(postsCol, where("slug", "==", slug));
+const postSnapshot = await getDocs(q);
+const post = postSnapshot.docs.map((doc) => ({
+  id: doc.id,
+  ...doc.data(),
+}))[0] as Post;
+
+if (!post) {
+  return Astro.redirect("/404");
+}
+---
+
+<Layout title={post.title}>
+  <article>
+    <h1>{post.title}</h1>
+    <p>{post.date}</p>
+    <div>{post.content}</div>
+  </article>
+</Layout>

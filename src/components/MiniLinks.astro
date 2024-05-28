@@ -1,4 +1,5 @@
 ---
+import { Image } from 'astro:assets';
 interface Props {
   title1: string;
   text1: string;
@@ -12,12 +13,25 @@ interface Props {
   imageurl: string;
 }
 
-const { title1, text1, link1, title2, text2, link2, title3, text3, link3, imageurl } =
-  Astro.props;
+const {
+  title1,
+  text1,
+  link1,
+  title2,
+  text2,
+  link2,
+  title3,
+  text3,
+  link3,
+  imageurl,
+} = Astro.props;
 ---
 
 <miniLinks>
-  <img
+  <Image
+    width="200"
+    height="150"
+    format="webp"
     class="image"
     src={imageurl}
     alt="Life Savers on a rack insde the boat"

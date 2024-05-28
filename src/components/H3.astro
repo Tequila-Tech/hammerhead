@@ -1,0 +1,8 @@
+---
+const { blog } = Astro.props;
+---
+
+<div class="label">
+  <h3 class="blog-card__title">{blog.title}</h3>
+  <p class="blog-card__published"><em>Published on: {blog.publishedAt}</em></p>
+</div>

@@ -1,10 +1,14 @@
 ---
+import { Image } from "astro:assets";
 import PrimaryCta from "../components/PrimaryCta.astro";
 ---
 
 <nav class="main-wrapper">
   <div class="logo">
-    <img
+    <Image
+      width="200"
+      height="150"
+      format="webp"
       class="img"
       src="/mainLogo.jpeg"
       alt="Logo"
