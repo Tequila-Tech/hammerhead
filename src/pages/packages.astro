@@ -1,58 +1,126 @@
 ---
+import Layout from "../layouts/Layout.astro";
 import HeroImage from "../components/HeroImage.astro";
 import PriceCard from "../components/PriceCard.astro";
 import PriceCardCustom from "../components/PriceCardCustom.astro";
-import Layout from "../layouts/Layout.astro";
 import MostRequested from "../components/MostRequested.astro";
 import LocationMap from "../components/LocationMap.astro";
 import FormsToDownload from "../components/FormsToDownload.astro";
 import ReadyToBook from "../components/ReadyToBook.astro";
+import { sanity } from "../lib/sanityClient";
+
+// Fetch the packages page data from Sanity
+let packagesPageData = null;
+
+try {
+  packagesPageData = await sanity.fetch(
+    `*[_type == "packagesPage"][0]{
+      title,
+      subTitle,
+      "mainImageUrl": mainImage.asset->url,
+      packgageSectionTitle,
+      "packagesFeatured": packagesFeatured[]->{
+        packageName,
+        price,
+        dives
+      },
+      customPackgageTitle,
+      "customPackages": customPackages[]->{
+        packageName,
+        price,
+        details,
+        dives,
+        detailsBold,
+      },
+      additionalBlogCTA{
+        title,
+        description,
+        ctaText,
+        ctaLink,
+        imageAlt,
+        "imageUrl": additionalBlogCTA.asset->url
+      }
+    }`
+  );
+} catch (error) {
+  console.error("Sanity Fetch Error:", error);
+}
+
+// Ensure there is fallback data if nothing was fetched
+packagesPageData = packagesPageData ?? {};
+
+const heroTitle = packagesPageData.title ?? "Choose your package and let’s dive!";
+const heroSubtitle =
+  packagesPageData.subTitle ??
+  "Explore vibrant reefs, ancient wrecks, and marine marvels with our expert guides, we are here to make your experience unforgettable.";
+const heroImage = packagesPageData.mainImageUrl ?? "/packageHero.jpg";
+
+// For the featured packages section, if your query returns only one object (because it’s a reference)
+// you might need to adjust this if you expect multiple packages.
+const featuredPackages = packagesPageData?.packagesFeatured?.flat() || [
+
+  { packageName: "1 DAY", price: "$100", dives: "2 DIVE TANKS" },
+  { packageName: "2 DAY", price: "$196", dives: "4 DIVE TANKS" },
+  { packageName: "3 DAY", price: "$288", dives: "6 DIVE TANKS" },
+  { packageName: "4 DAY", price: "$372", dives: "8 DIVE TANKS" },
+  { packageName: "5 DAY", price: "$450", dives: "10 DIVE TANKS" },];
+
+// For the custom packages, wrap it in an array for consistency (adjust if needed)
+const customPackages = packagesPageData.customPackages?.flat() || [];
+
+const customPackageTitle = packagesPageData.customPackgageTitle ?? "CUSTOM PACKAGE";
+console.log(customPackages)
 ---
 
 <Layout title="Hammer Head Cozumel | Dive Shop">
+  <!-- Hero Section -->
   <HeroImage
-    title="Choose your package and let’s dive!"
-    subtitle="Explore vibrant reefs, ancient wrecks, and marine marvels with our expert guides, we are here to make your experience unforgettable."
-    image="/packageHero.jpg"
-    alt="diver looking at camera while diving in deep blue ocean"
+    title={heroTitle}
+    subtitle={heroSubtitle}
+    image={heroImage}
+    alt="Hammer head dive shop hero section image"
   />
+
+  <!-- Featured Packages Section -->
   <div class="package-per-day">
     <div class="wrapper">
-      <h2 class="title"> PACKAGE PER DAY</h2>
+      <h2 class="title">{packagesPageData.packgageSectionTitle ?? "PACKAGE PER DAY"}</h2>
       <div class="content">
-        <PriceCard packageName="1 DAY" price="$95" dives="2 DIVE TANKS" />
-        <PriceCard packageName="2 DAY" price="$190" dives="4 DIVE TANKS" />
-        <PriceCard packageName="3 DAY" price="$270" dives="6 DIVE TANKS" />
-        <PriceCard packageName="4 DAY" price="$360" dives="8 DIVE TANKS" />
-        <PriceCard packageName="5 DAY" price="$450" dives="10 DIVE TANKS" />
+        {featuredPackages.map((pkg) => (
+          <PriceCard 
+            packageName={pkg.packageName} 
+            price={pkg.price} 
+            dives={pkg.dives} 
+          />
+        ))}
       </div>
     </div>
   </div>
+
+  <!-- Custom Packages Section -->
   <div class="other-p">
     <div class="wrapper">
-      <h2 class="title"> PACKAGE PER DAY</h2>
+      <h2 class="title">{customPackageTitle}</h2>
       <div class="content">
-        <PriceCard
-          packageName="Afternoon Dive 1"
-          price="$75"
-          dives="2 DIVE TANKS"
-        />
-        <PriceCardCustom packageName="Custom Packages" price="$???" />
-        <PriceCard
-          packageName="Afternoon Dive 2"
-          price="$95"
-          dives="6 DIVE TANKS"
-        />
+        {customPackages.map((pkg) => (
+          <PriceCardCustom 
+            packageName={pkg.packageName} 
+            price={pkg.price} 
+            details={pkg.details}
+            detailsBold={pkg.detailsBold}
+            dives={pkg.dives}
+          />
+        ))}
       </div>
     </div>
   </div>
-  <MostRequested
-    title="Colombia reef our most requested dive site"
-    content="Whether you are a seasoned diver chasing the perfect reef or a beginner eager to find the wonders of the ocean, our expert instructors and vibrant team staff are here to make your experience unforgettable."
-  />
+
+  <!-- Other Components -->
+  <MostRequested title={packagesPageData.additionalBlogCTA.title} image={packagesPageData.additionalBlogCTA.imageUrl} content={packagesPageData.additionalBlogCTA.description} alt={packagesPageData.additionalBlogCTA  .imageAlt} />
   <LocationMap />
   <FormsToDownload />
   <ReadyToBook />
+
   <style>
     .package-per-day {
       color: white;

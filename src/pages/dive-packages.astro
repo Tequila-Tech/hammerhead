@@ -1,0 +1,42 @@
+---
+import { sanity } from '../lib/sanityClient';
+
+// GROQ Query to get all dive packages
+const query = `*[_type == "divePackage"]{
+    packageName,
+    price,
+    dives,
+    title,
+    details,
+    detailsBold,
+    ctaButtonText
+}`;
+
+// Fetch Data from Sanity
+const divePackages = await sanity.fetch(query);
+---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Dive Packages</title>
+</head>
+<body>
+    <h1>Dive Packages</h1>
+
+    <div>
+        {divePackages.map((pkg) => (
+            <div class="package-card">
+                <h2>{pkg.packageName}</h2>
+                {pkg.price && <p><strong>Price:</strong> {pkg.price}</p>}
+                {pkg.dives && <p><strong>Dives:</strong> {pkg.dives}</p>}
+                <h3>{pkg.title}</h3>
+                {pkg.details && <p>{pkg.details}</p>}
+                {pkg.detailsBold && <p><strong>{pkg.detailsBold}</strong></p>}
+                <button>{pkg.ctaButtonText}</button>
+            </div>
+        ))}
+    </div>
+
+</body>
+</html>

@@ -2,21 +2,36 @@
 interface Props {
   title: string;
   subtitle: string;
-  image: string;
+  videoUrl?: string;
+  imageUrl?: string;
 }
 
-const { subtitle, title, image } = Astro.props;
+const { title, subtitle, videoUrl, imageUrl } = Astro.props;
 ---
 
 <astro-hero>
   <div class="hero-wrapper">
-    <video src={image} autoplay loop muted playsinline></video>
+    {videoUrl ? (
+      <div style="padding:56.25% 0 0 0; position:relative;">
+        <iframe
+          src={videoUrl}
+          frameborder="0"
+          allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+          style="position:absolute; top:0; left:0; width:100%; height:100%;"
+          title={title}
+        ></iframe>
+      </div>
+    ) : (
+      <video src={imageUrl} autoplay loop muted playsinline></video>
+    )}
+    
     <div class="content">
       <h1>{title}</h1>
       <p>{subtitle}</p>
     </div>
   </div>
 </astro-hero>
+
 <style>
   astro-hero .hero-wrapper {
     width: 100%;
@@ -24,6 +39,7 @@ const { subtitle, title, image } = Astro.props;
     position: relative;
     height: fit-content;
   }
+  astro-hero .hero-wrapper iframe,
   astro-hero .hero-wrapper video {
     height: 90vh;
     width: 100%;
@@ -56,10 +72,22 @@ const { subtitle, title, image } = Astro.props;
     }
   }
   @media (max-width: 720px) {
+    astro-hero .hero-wrapper div {
+      padding-bottom: 10rem;
+    }
     astro-hero .hero-wrapper .content {
       left: 0;
+      display: flex;
+      flex-direction: column;
       width: 100%;
       padding: 1rem;
+      gap: 1rem;
+    }
+    astro-hero h1 {
+      font-size: large;
+    }
+    astro-hero p {
+      font-size: small;
     }
   }
 </style>

@@ -1,30 +1,17 @@
 ---
 import { Image } from 'astro:assets';
+
 interface Props {
-  title1: string;
-  text1: string;
-  link1: string;
-  title2: string;
-  text2: string;
-  link2: string;
-  title3: string;
-  text3: string;
-  link3: string;
-  imageurl: string;
+  links: Array<{
+    title: string;
+    description: string;
+    ctaText: string;
+    ctaLink: string;
+  }>;
+  imageUrl: string;
 }
 
-const {
-  title1,
-  text1,
-  link1,
-  title2,
-  text2,
-  link2,
-  title3,
-  text3,
-  link3,
-  imageurl,
-} = Astro.props;
+const { links, imageUrl } = Astro.props;
 ---
 
 <miniLinks>
@@ -33,25 +20,18 @@ const {
     height="150"
     format="webp"
     class="image"
-    src={imageurl}
-    alt="Life Savers on a rack insde the boat"
+    src={imageUrl}
+    alt="Life Savers on a rack inside the boat"
   />
+
   <div class="wrapper">
-    <div class="link-item">
-      <h4>{title1}</h4>
-      <p>{text1}</p>
-      <a href={link1}>Learn More</a>
-    </div>
-    <div class="link-item">
-      <h4>{title2}</h4>
-      <p>{text2}</p>
-      <a href={link2}>Learn More</a>
-    </div>
-    <div class="link-item">
-      <h4>{title3}</h4>
-      <p>{text3}</p>
-      <a href={link3}>Learn More</a>
-    </div>
+    {links?.map((link, index) => (
+      <div class="link-item" key={index}>
+        <h4>{link.title}</h4>
+        <p>{link.description}</p>
+        <a href={link.ctaLink} target="_blank">{link.ctaText ?? "Learn More"}</a>
+      </div>
+    ))}
   </div>
 </miniLinks>
 <style>

@@ -2,9 +2,11 @@
 import MainCtaBtn from "../components/MainCtaBtn.astro";
 interface props {
   title: string;
+  image: string;
   content: string;
+  alt: string;
 }
-const { title, content } = Astro.props;
+const { title, content, image, alt } = Astro.props;
 ---
 
 <div class="most-requested-wrapper">
@@ -19,8 +21,8 @@ const { title, content } = Astro.props;
     <div class="image">
       <img
         class="image-item"
-        src="/mostRequestedReef.jpg"
-        alt="Photo of a reef with a clown fish coming out"
+        src={image ?? "/mostRequestedReef.jpg"}
+        alt={alt ?? "Photo of a reef with a clown fish coming out"}
       />
     </div>
   </div>
@@ -40,6 +42,7 @@ const { title, content } = Astro.props;
     display: flex;
     padding: 3rem;
     flex-direction: column;
+    justify-content: center;
   }
   .title {
     font-size: xxx-large;

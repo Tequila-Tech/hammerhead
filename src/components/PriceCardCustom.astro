@@ -2,38 +2,77 @@
 interface Props {
   packageName: string;
   price: string;
+  details: string;
+  detailsBold: string;
+  dives: string;
 }
-const { packageName, price } = Astro.props;
+const captainAlt = "GUIDED BOAT DIVE";
+const sandwichAlt = "SANDWICHES";
+const weightAlt = "WEIGHTS";
+const waterAlt = "WATER";
+const fruitAlt = "FRUIT";
+
+const { packageName, price, details, detailsBold, dives } = Astro.props as Props;
 ---
 
 <priceCard>
   <div class="main-card-wrapper">
     <div class="title">
-      <h4>{packageName}</h4>
+      <h4>{packageName || ""}</h4>
     </div>
     <div class="content">
       <div class="price">
-        <span>{price}</span>
+        <span>{price || ""}</span>
         <p>Make your own!</p>
       </div>
       <div class="description">
-        <p> What's your dream vacation? We will make it happen. Contact us.</p>
+        {detailsBold ? (
+                <div class="cdes"><p>{detailsBold}</p></div>
+        ) : (
+          <div class="newItemCol">
+            <div class="item">
+              <img class="icon" src="/captain.png" alt={captainAlt} />
+              <p>{captainAlt}</p>
+            </div>
+            <div class="item">
+              <img class="icon" src="/tank.png" alt={dives} />
+              <p>{dives}</p>
+            </div>
+            <div class="item">
+              <img class="icon" src="/sandwich.png" alt={sandwichAlt} />
+              <p>{sandwichAlt}</p>
+            </div>
+            <div class="item">
+              <img class="icon" src="/weight.png" alt={weightAlt} />
+              <p>{weightAlt}</p>
+            </div>
+            <div class="item">
+              <img class="icon" src="/water.png" alt={waterAlt} />
+              <p>{waterAlt}</p>
+            </div>
+            <div class="item">
+              <img class="icon" src="/fruit.png" alt={fruitAlt} />
+              <p>{fruitAlt}</p>
+            </div>
+          </div>
+        )}
       </div>
+      
       <div class="policy">
-        <p>Have any questions please let us know, we'd be happy to answer</p>
-        <p> </p>
+        <p>{details || "Have any questions? Please let us know, we'd be happy to answer."}</p>
       </div>
     </div>
     <div class="cta">
-      <a href="/Booning">Book Now</a>
+      <a href="/Booking">Book Now</a>
     </div>
   </div>
 </priceCard>
 
+
 <style>
   .main-card-wrapper {
     height: fit-content;
-    min-height: 80vh;
+    min-height: 510px;
     max-width: 400px;
     overflow: hidden;
     border-radius: 15px;
@@ -49,7 +88,6 @@ const { packageName, price } = Astro.props;
     background-color: #d90b16;
   }
   .content {
-    gap: 5rem;
     display: flex;
     color: #0b0b0b;
     min-height: 100%;
@@ -81,7 +119,7 @@ const { packageName, price } = Astro.props;
     align-items: flex-start;
     padding: 1rem 3rem;
   }
-  .description p {
+  .cDes p {
     font-weight: bolder;
     font-size: xx-large;
   }
@@ -91,6 +129,11 @@ const { packageName, price } = Astro.props;
     flex-direction: row;
     justify-content: center;
     padding: 0.3rem 0rem;
+  }
+  .newItemCol {
+    display: flex;
+    flex-direction: column;
+    align-items: start;
   }
   .icon {
     width: 50px;

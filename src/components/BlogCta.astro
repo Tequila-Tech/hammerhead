@@ -1,12 +1,40 @@
 ---
 import { Image } from "astro:assets";
+
+interface Props {
+  title: string;
+  description: string;
+  ctaText: string;
+  hpd: string;
+  dfr: string;
+  yoe: string;
+  ctaLink: string;
+  videoUrl?: string;
+  imageUrl?: string;
+}
+
+const { title, description, ctaText, ctaLink, videoUrl, imageUrl, hpd, dfr, yoe } = Astro.props;
 ---
 
-<blogCta>
+<section class="blog-cta">
   <div class="content-wrapper-row">
+    <!-- Video Section (If Available) -->
     <div class="video-wrapper">
-      <video src="/video-1.mp4" loop controls playsinline></video>
+      {videoUrl ? (
+        <div class="iframe-container">
+          <iframe
+            src={videoUrl}
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media"
+            title={title}
+          ></iframe>
+        </div>
+      ) : (
+        <video src="/video-1.mp4" loop controls playsinline></video>
+      )}
     </div>
+
+    <!-- Image and Content Section -->
     <div class="blog-cta-wrapper">
       <div class="image">
         <Image
@@ -14,49 +42,48 @@ import { Image } from "astro:assets";
           height="150"
           format="webp"
           class="image-item"
-          src="/blogWrapper1.jpg"
-          alt="foto de 3 busos en un arrefice con uchos peces"
+          src={imageUrl ?? "/blogWrapper1.jpg"}
+          alt="Blog Preview Image"
         />
       </div>
       <div class="content">
-        <h2>Explore the wonders of Cozumel's marine ecosystems</h2>
-        <p
-          >Cozumel's reefs are vibrant underwater ecosystems filled with
-          colorful corals, diverse fish species, and captivating marine life.
-          From the shallow coral gardens to the dramatic drop-offs, each dive
-          site offers a unique adventure, where you can encounter eagle rays,
-          sea turtles, and explore intricate coral formations</p
-        >
-        <span>Explore our blog to learn more</span>
+        <h2>{title}</h2>
+        <p>{description}</p>
+        <a href={ctaLink} target="_blank" rel="noopener noreferrer">
+          <span>{ctaText}</span>
+        </a>
       </div>
     </div>
   </div>
+
   <div class="divers-spacer">
     <div class="divers-wrapper">
       <div class="divers-content">
-        <div class="number">900+</div>
+        <div class="number">{hpd}</div>
         <p>Happy Divers</p>
       </div>
       <div class="divers-content">
-        <div class="number">12</div>
+        <div class="number">{dfr}</div>
         <p>Different Reefs</p>
       </div>
       <div class="divers-content">
-        <div class="number">24+</div>
+        <div class="number">{yoe}</div>
         <p>Years of Experience</p>
       </div>
     </div>
   </div>
-</blogCta>
+</section>
+
 <style>
-  blogCta {
+  .blog-cta {
     width: 100%;
     display: flex;
     color: white;
-    background-color: #0000;
+    background-color: transparent;
     height: fit-content;
     flex-direction: column;
   }
+
   .content-wrapper-row {
     gap: 2rem;
     padding: 3rem;
@@ -65,17 +92,41 @@ import { Image } from "astro:assets";
     flex-direction: row;
     justify-content: center;
   }
+
   .video-wrapper {
     width: 50%;
-    padding: 4rem 2rem;
+    padding: 4rem 0;
+    position: relative;
   }
+
+  /* Fix iframe aspect ratio */
+  .iframe-container {
+    width: 100%;
+    height: 50vh;
+    min-height: 700px;
+    position: relative;
+    padding-top: 56.25%;
+    border-radius: 15px;
+    overflow: hidden;
+  }
+
+  .iframe-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 15px;
+  }
+
   video {
     width: 100%;
     height: 100%;
-    height: 800px;
+    max-height: 800px;
     object-fit: cover;
     border-radius: 15px;
   }
+
   .blog-cta-wrapper {
     width: 50%;
     height: 800px;
@@ -83,15 +134,18 @@ import { Image } from "astro:assets";
     flex-direction: column;
     justify-content: space-between;
   }
+
   .blog-cta-wrapper .image {
     height: 45%;
   }
+
   .image-item {
     width: 100%;
     height: 100%;
     object-fit: cover;
     border-radius: 15px;
   }
+
   .blog-cta-wrapper .content {
     gap: 1rem;
     height: 50%;
@@ -100,11 +154,13 @@ import { Image } from "astro:assets";
     flex-direction: column;
     justify-content: space-around;
   }
+
   .content h2 {
     font-weight: bold;
     font-size: xx-large;
   }
-  .content span {
+
+  .content a span {
     font-size: large;
     font-weight: bolder;
     text-decoration: underline;
@@ -112,15 +168,18 @@ import { Image } from "astro:assets";
     text-decoration-thickness: 5px;
     text-underline-offset: 4px;
   }
-  .content span:hover {
+
+  .content a span:hover {
     color: #d90b16;
     text-decoration-color: #d90b16;
     cursor: pointer;
   }
+
   .divers-spacer {
     width: 100%;
     background-color: #ead91a;
   }
+
   .divers-wrapper {
     width: 100%;
     display: flex;
@@ -129,18 +188,21 @@ import { Image } from "astro:assets";
     flex-direction: row;
     justify-content: space-around;
   }
+
   .divers-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
   }
+
   .divers-wrapper p {
     color: #d90b16;
     font-weight: bold;
     text-align: center;
     font-size: xx-large;
   }
+
   .divers-content .number {
     color: #0b0b0b;
     font-size: xxx-large;
@@ -170,6 +232,7 @@ import { Image } from "astro:assets";
       justify-content: space-evenly;
     }
   }
+
   @media (max-width: 720px) {
     .divers-wrapper {
       flex-direction: column;

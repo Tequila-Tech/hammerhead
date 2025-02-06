@@ -6,96 +6,141 @@ import SpecialtyPriceCard from "../components/SpecialtyPriceCard.astro";
 import ReadyToBook from "../components/ReadyToBook.astro";
 import MiniLinks from "../components/MiniLinks.astro";
 import FormsToDownload from "../components/FormsToDownload.astro";
+import { sanity } from "../lib/sanityClient";
+
+// Fetch specialty dives page data from Sanity
+let specialtyDivesPage = null;
+
+try {
+  specialtyDivesPage = await sanity.fetch(`*[_type == "specialtyDivesPage"][0]{
+    title,
+    subTitle,
+    mainImage {
+      "url": asset->url,
+      alt
+    },
+    additionalBlogCTA{
+      title,
+      description,
+      ctaText,
+      ctaLink,
+      "imageUrl": additionalBlogCTA.asset->url
+    },
+    packagesFeatured[]->{
+      packageName,
+      details,
+      detailsBold
+    },
+    miniLinks[]{
+      title,
+      description,
+      ctaText,
+      ctaLink,
+      backgroundImage {
+        "url": asset->url
+      }
+    },
+    ctaButtonText
+  }`);
+} catch (error) {
+  console.error("Sanity Fetch Error:", error);
+}
+
+// Ensure fallback values if data is missing
+specialtyDivesPage = specialtyDivesPage ?? {};
+const {
+  title = "Specialty Dives",
+  subTitle = "Explore vibrant reefs, ancient wrecks, and marine marvels with our expert guides, we are here to make your experience unforgettable.",
+  mainImage = { url: "/packageBg1.jpg", alt: "Diver looking at camera while diving in deep blue ocean" },
+  packagesFeatured = [],
+  miniLinks = [],
+  ctaButtonText = "Book Now",
+} = specialtyDivesPage;
 ---
 
 <Layout title="Hammer Head Cozumel | Dive Shop">
+  <!-- Hero Section -->
   <HeroImage
-    title="SPECIALTY DIVES"
-    subtitle="Explore vibrant reefs, ancient wrecks, and marine marvels with our expert guides, we are here to make your experience unforgettable."
-    image="/packageBg1.jpg"
-    alt="diver looking at camera while diving in deep blue ocean"
+    title={title}
+    subtitle={subTitle}
+    image={mainImage?.url ?? "/packageBg1.jpg"}
+    alt={mainImage?.alt ?? "Diver looking at camera while diving in deep blue ocean"}
   />
+
+  <!-- Lion Fish Hunting Section -->
   <LionFishHunting
     title="Lion Fish Hunting"
     content="Lion fish are beautiful yet non-native and invasive species in Caribbean waters. As a result, they have no natural predators to keep their population in balance. Their voracious appetite and rapid reproduction make them threats to our local marine species, and if left unchecked, they will cause irreparable damage. This is why we hunt them. Plus, they make for fabulous ceviche."
     content2="In order to prevent damage to the environment or yourself, our expert guides will brief you on when to shoot and when not to shoot scenarios, as well as spear handling safety. Also, keep in mind that lion fish hunts can involve deep dives to depths of 100 feet or more, so dive experience and certification as a deep diver are advantageous."
   />
+
+  <!-- Specialty Packages Section -->
   <div class="specialty">
     <div class="image">
       <img
         class="image-item"
-        src="/packageBg1.jpg"
-        alt="foto de 3 busos en un arrefice con uchos peces"
+        src={mainImage?.url ?? "/packageBg1.jpg"}
+        alt="Specialty dive package background"
       />
     </div>
+    
     <div class="content">
-      <SpecialtyPriceCard
-        packageName="Southern Reefs"
-        title="What’s Included"
-        details={`Colombia $8 USD extra
-        \nPunta sur $15 USD extra
-        \nChan chucaab $15 USD extra
-        \nMaracaibo $20 USD extra`}
-        detailsBold={``}
-      />
-      <SpecialtyPriceCard
-        packageName="Northern Reefs"
-        title="What’s Included"
-        details={`Barracuda $15 USD Extra
-        \nCantarel (Eagle Rays Reef) $10 Usd Extra`}
-        detailsBold={`Experienced divers only, 50 dives minimum & 4 divers minimum`}
-      />
-      <SpecialtyPriceCard
-        packageName="Twilight/Night dive"
-        title="What’s Included"
-        details={`1 late afternoon dive 
-        1 night dive, 
-        2 tanks
-        Weights, water & snacks included 
-        \nAll for $99 USD`}
-        detailsBold={``}
-      />
+      {packagesFeatured?
+        packagesFeatured.map((pkg) => (
+          <SpecialtyPriceCard 
+            packageName={pkg.packageName}
+            title="What’s Included"
+            details={pkg.details ?? "Package details unavailable"}
+            detailsBold={pkg.detailsBold ?? ""}
+          />
+        ))
+       : (
+        <p>No specialty dive packages available at this time.</p>
+      )}
     </div>
   </div>
-  <ReadyToBook />
-  <MiniLinks
-    title1="Life under water in Cozumel"
-    title2="The Fascinating World of Bioluminescent Marine Life"
-    title3="The Majestic Manta Ray"
-    text1="Cozumel, Mexico, boasts vibrant coral reefs and diverse marine life, offering unforgettable diving and snorkeling experiences in crystal-clear waters."
-    text2="Dive into the enchanting phenomenon of bioluminescence in the ocean, where organisms emit light through chemical reactions, from tiny plankton to deep-sea fish"
-    text3="Manta rays, massive yet gentle filter feeders, navigate oceans with grace, captivating observers worldwide. Threatened by habitat loss and targeted fishing, conservation efforts focus on safeguarding their habitats and regulating trade."
-    link1="/blog"
-    link2="/blog"
-    link3="/blog"
-    imageurl="/image123.jpg"
+
+  <!-- Booking Section -->
+  <ReadyToBook buttonText={ctaButtonText} />
+
+  <!-- Mini Links Section -->
+  <MiniLinks 
+    links={miniLinks} 
+    imageUrl={specialtyDivesPage.miniLinksBackgroundImageUrl ?? "/defaultBackground.jpg"} 
   />
+
   <FormsToDownload />
 </Layout>
+
+<!-- Styles -->
 <style>
   .specialty {
     gap: 2rem;
     width: 100%;
     display: flex;
-    height: 1400px;
+    height: auto;
     flex-wrap: wrap;
     position: relative;
     align-items: center;
     flex-direction: row;
     min-height: fit-content;
     justify-content: center;
+    padding-bottom: 3rem;
   }
+
   .specialty .image {
     width: 100%;
     height: 100%;
     min-height: fit-content;
   }
+
   .specialty .image-item {
     width: 100%;
     height: 100%;
     opacity: 0.5;
     object-fit: cover;
   }
+
   .content {
     top: 50%;
     left: 50%;
@@ -112,20 +157,23 @@ import FormsToDownload from "../components/FormsToDownload.astro";
     justify-content: space-around;
     transform: translate(-50%, -50%);
   }
+
   @media (max-width: 1080px) {
     .content {
       width: 100%;
       padding: 1rem;
     }
   }
+
   @media (max-width: 850px) {
     .specialty {
-      height: 2100px;
+      height: auto;
     }
   }
+
   @media (max-width: 780px) {
     .specialty {
-      height: 2200px;
+      height: auto;
     }
     .content {
         gap: 2rem;
